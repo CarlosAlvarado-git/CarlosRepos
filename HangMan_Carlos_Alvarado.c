@@ -4,6 +4,11 @@
 const char *palabras[23] = {"pronostico", "podio", "marineros","gradas",
         "cepo","sardina","hombros","agitar","revuleto","oveja","limosna","espiral","debut","cartero","desafiar",
         "supermercado","castor","terminal","chimenea","abecedario","amenaza","olas","panorama"};
+        
+            int opor = 0;
+            int acir = 0;
+            int gan = 0;
+            int largo = 0;
 int main(void)
 {
 
@@ -19,31 +24,88 @@ int main(void)
             char Name[] = "";
             printf("Ingrese su nombre:   ");
             scanf("%s", Name);
-            
-            printf("%s", Name);
             printf("\n");
-            char pal[] = "";
-            char palfin[] = "";
             int rn = (rand() %23);
+            largo = 0; 
+            largo = strlen(palabras[rn]); 
+            char pal[largo];
+            char palfin[largo];
             strcat(pal, palabras[rn]);
-            int largo = strlen(palabras[rn]); 
             for(int i = 0; i < largo; i++)
             {
-              strcat(palfin, "_ ");
+              strcat(palfin, "_");
             }
-            int opor = 0;
-            int acir = 0;
-            while (opor != 1)
+            acir = 0;
+            opor = 0;
+            while (1)
             {
-
-              printf("Nombre: %s\n", pal);
-              printf("Intentos: %i/10\n", opor);
-              printf("Aciertos: %i\n", acir);
-              printf("Palabra: \n");
-              opor = 1;
+              if(opor == 10 || acir == largo)
+              {
+                if(acir == largo)
+                {
+                  gan = 1;
+                }
+                else if(opor == 10 && acir == largo)
+                {
+                  gan = 1;
+                }
+                else {
+                  gan = 0;
+                }
+                if(gan == 1)
+                {
+                  printf("Haz ganado! en %d intentos, Felicidades\n", opor);
+                }
+                else{
+                  printf("Haz perdido :(\n!");
+                }
+                break;
+              }
+              else 
+              {
+                printf("Nombre: %s\n", Name);
+                printf("Intentos: %i/10\n", opor);
+                printf("Aciertos: %i\n", acir);
+                printf("Largo %d\n", largo);
+                printf("Palabra: ");
+                for(int i = 0; i < largo; i++)
+                {
+                  printf("%c ", palfin[i]);
+                }
+                printf("\n");
+                printf("Ingese una letra o palabra: ");
+                char letra[] = ""; 
+                scanf("%s", letra);
+                int Ldletra = strlen(letra);
+                if(Ldletra == 1)
+                {
+                  printf("Letra: %s\n", letra);
+                    for(int i = 0; i < largo; i++)
+                    {
+                        if(letra[0] == pal[i])
+                        {
+                            palfin[i] = pal[i];
+                            acir++; 
+                        }
+                    }
+                }
+                else
+                {
+                    if(*letra == *pal)
+                    {
+                        acir = largo;
+                      for(int i = 0; i < largo; i++)
+                      {
+                        if(letra[i] == pal[i])
+                        {
+                            palfin[i] = pal[i]; 
+                        }
+                      }
+                    }
+                }
+                opor++;
+              }
             }
-            
-
         }
         else if (R == 2)
         {
