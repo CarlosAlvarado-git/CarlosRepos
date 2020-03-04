@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include<time.h> 
 const char *palabras[23] = {"pronostico", "podio", "marineros","gradas",
         "cepo","sardina","hombros","agitar","revuleto","oveja","limosna","espiral","debut","cartero","desafiar",
         "supermercado","castor","terminal","chimenea","abecedario","amenaza","olas","panorama"};
@@ -25,6 +26,7 @@ int main(void)
             printf("Ingrese su nombre:   ");
             scanf("%s", Name);
             printf("\n");
+            srand(time(0)); 
             int rn = (rand() %23);
             largo = 0; 
             largo = strlen(palabras[rn]); 
@@ -33,7 +35,7 @@ int main(void)
             strcat(pal, palabras[rn]);
             for(int i = 0; i < largo; i++)
             {
-              strcat(palfin, "_");
+              palfin[i] = '_';
             }
             acir = 0;
             opor = 0;
@@ -54,10 +56,10 @@ int main(void)
                 }
                 if(gan == 1)
                 {
-                  printf("Haz ganado! en %d intentos, Felicidades\n", opor);
+                  printf("Haz ganado! en %d intentos, Felicidades\n \n", opor);
                 }
                 else{
-                  printf("Haz perdido :(\n!");
+                  printf("Haz perdido :(\n\n!");
                 }
                 break;
               }
