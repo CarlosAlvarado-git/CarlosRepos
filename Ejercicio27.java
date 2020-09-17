@@ -1,6 +1,5 @@
 import java.util.*;
-import java.lang.Character; 
-
+import java.lang.Character; //hola que pex XD jaja
 public class Ejercicio27 {
     
     static Scanner teclado = new Scanner(System.in); 
